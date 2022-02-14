@@ -1,47 +1,61 @@
 #Andrew McGovern
 #CS 175L 50
-#Restaurant Selector
+#Restaurant Selector V2
 
 #Declare the boolean values for each dietary restriction
-vegetarian = False
-vegan = False
-glutenFree = False
+repeat = True
 
-#Make a string variable for the yes or no inputs for each question,
-VEGETARIAN_YN = input("Is anyone in your party a vegetarian?: ")
-#Then check if the string equals any variation of saying Yes
-if VEGETARIAN_YN == "yes" or VEGETARIAN_YN == "Yes" or VEGETARIAN_YN == "Y":
-    #If so, set the boolean variable for that diet restriction to True
-    vegetarian = True
+#V2: Repeat entire restaurant search if they answer yes to repeating at end
+while repeat == True:
 
-#Do the same process for the other two conditions
-VEGAN_YN = input("Is anyone in your party a vegan?: ")
-if VEGAN_YN == "yes" or VEGAN_YN == "Yes" or VEGAN_YN == "Y":
-    vegan = True
+    #Set the variables to false for each loop
+    vegetarian = False
+    vegan = False
+    glutenFree = False
     
-GLUTEN_FREE_YN = input("Is anyone in your party gluten-free?: ")
-if GLUTEN_FREE_YN == "yes" or GLUTEN_FREE_YN == "Yes" or GLUTEN_FREE_YN == "Y":
-    glutenFree = True
+    #Make a string variable for the yes or no inputs for each question,
+    VEGETARIAN_YN = input("\nIs anyone in your party a vegetarian?: ")
+    #Then check if the string equals any variation of saying Yes
+    if VEGETARIAN_YN.lower() == "yes" or VEGETARIAN_YN.lower() == "y":
+        #If so, set the boolean variable for that diet restriction to True
+        vegetarian = True
 
-#Print out the restaurant list
-print("\nHere are your restaurant choices:")
+    #Do the same process for the other two conditions
+    VEGAN_YN = input("Is anyone in your party a vegan?: ")
+    if VEGAN_YN.lower() == "yes" or VEGAN_YN.lower() == "y":
+        vegan = True
 
-#Joe's accomodates to no restrictions
-#Only an option if all conditions are no
-if (not vegetarian) and (not vegan) and (not glutenFree):
-    print("Joe's Gourmet Burgers")
+    GLUTEN_FREE_YN = input("Is anyone in your party gluten-free?: ")
+    if GLUTEN_FREE_YN.lower() == "yes" or GLUTEN_FREE_YN.lower() == "y":
+        glutenFree = True
 
-#Mama's accomodates to only vegetarian
-#Only an option if vegan and gluten-free are no
-if (not vegan) and (not glutenFree):
-    print("Mama's Fine Italian")
+    #Print out the restaurant list
+    print("\nHere are your restaurant choices:")
 
-#Main Street accomodates to only vegetarian and gluten-free
-#Only an option if vegan is no
-if (not vegan):
-    print("Main Street Pizza Company")
+    #Joe's accomodates to no restrictions
+    #Only an option if all conditions are no
+    if (not vegetarian) and (not vegan) and (not glutenFree):
+        print("Joe's Gourmet Burgers")
 
-#These accomodate to all options, whether the party has needs or not
-#So they fit on every list, no if statement needed
-print("Corner Cafe")
-print("The Chef's Kitchen")
+    #Mama's accomodates to only vegetarian
+    #Only an option if vegan and gluten-free are no
+    if (not vegan) and (not glutenFree):
+        print("Mama's Fine Italian")
+
+    #Main Street accomodates to only vegetarian and gluten-free
+    #Only an option if vegan is no
+    if (not vegan):
+        print("Main Street Pizza Company")
+
+    #These accomodate to all options, whether the party has needs or not
+    #So they fit on every list, no if statement needed
+    print("Corner Cafe")
+    print("The Chef's Kitchen")
+
+    #Version 2: Ask if the user wants to do another search
+    REPEAT_YN = input("\nWould you like to do another restaurant search?: ")
+    if REPEAT_YN.lower() == "yes" or REPEAT_YN.lower() == "y":
+        repeat = True
+    else:
+        repeat = False
+        print("Thank you for using this program.")
